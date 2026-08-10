@@ -47,8 +47,22 @@ can be arranged on request. See [`NOTICE.md`](NOTICE.md) for terms.
 - **BGE-M3** self-hosted embedding & reranking inference service
 - **Celery** for distributed scheduling and background jobs
 - **python-telegram-bot** client surface; Whisper STT and TTS for voice
-- **Docker Compose** deployment · LangSmith/Langfuse tracing · Prometheus metrics ·
-  Sentry monitoring
+- **Docker Compose** deployment
+
+## Observability
+
+Production issues in an AI product are invisible without deep instrumentation, so
+observability is a first-class subsystem of the platform:
+
+- **Langfuse & LangSmith** — end-to-end tracing of every agent turn, LLM call, and
+  tool execution, with prompt/response capture for debugging and quality review
+- **Sentry** — real-time error monitoring across the API, bot, and background workers
+- **Prometheus** — service health and business metrics exported from every component
+- **Structured logging** (Loguru) — key-value logs correlated across services
+- **LLM cost accounting** — per-provider token and cost tracking on every model call,
+  feeding weekly cost and usage reports
+- **Scheduler heartbeats** — liveness monitoring of the background job dispatcher, so
+  silent scheduling failures page us instead of the customer noticing
 
 ## Engineering practice
 
